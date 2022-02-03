@@ -1,0 +1,184 @@
+.header{
+    @include box(100%, --headerheight);
+    @include position(fixed, 0, auto, 0);
+    padding: 2rem 0;
+    z-index: 100;
+    
+    &__logo{ img{ width: 18rem; } }
+
+    &__navbar{
+        ul{
+            @include box(auto, 100%);
+            @include position(absolute, 50%, 0, 0);
+            transform: translateX(-50%);
+            justify-content: center;
+            display: flex;
+            
+            li{
+                height: 100%;
+
+                a{
+                    position: relative;
+                    @include flexbox(row, center, center);
+                    @include font(1.5rem, $color--white, Pb, uppercase);
+                    text-decoration: none;
+                    height: 100%; 
+                    margin: 0 2.5rem;
+                    transition: .3s;
+                }                    
+            }
+        }
+    }
+    
+    &__language{
+        height: 100%;
+
+        &__box{
+            width: 100%;
+            position: relative;
+            transform: translateX(30%);
+            @include flexbox(row, center, center);
+            
+            &-select{
+                @include flexbox(row, flex-start, center);
+                @include font(1.6rem, $color--white, Pb, uppercase);
+                cursor: pointer;
+                img{ max-width: 35%; }
+                &:hover{
+                    transition: .3s;
+                    color: $color--orange;
+                }            
+            }
+            &-option{
+                @include position(absolute, 0, auto, 100%);
+                @include temposcreen(0, none);
+                @include flexbox(column, center, center);
+                transform: translateX(-25%);
+                width: 100%;
+
+                background-color: $color--orange;
+                text-align: center;
+                a{
+                    @include font(1.5rem, $color--white, Pr, normal);
+                    padding: .5rem 0rem;
+                    width: 100%;
+                    text-decoration: none;
+                }
+            }
+            &-mobile{
+                position: relative;
+                margin-right: 1rem;
+                padding: 1.1rem 1.3rem;
+                display: none;
+                
+                span{
+                    @include box(2.5rem, .2rem);
+                    @include position(absolute, auto, 0, .1rem);                
+                    background-color: $color--orange;
+                }
+                &::before{
+                    content: '';
+                    @include box(2.5rem, .2rem);
+                    @include position(absolute, auto, 0, 1rem);                
+                    background-color: $color--orange;
+                }
+    
+                &::after{
+                    content: '';
+                    @include box(2.5rem, .2rem);
+                    @include position(absolute, auto, 0, 2rem);                
+                    background-color: $color--orange;
+                }
+            }
+        }
+    }
+
+    @include sm {
+        .header{
+            &__logo{ img { width: 13rem; } }
+            &__navbar{ 
+                ul {  
+                    @include position(absolute, 50%, 0, 0);
+                }
+            }
+        }
+    }
+
+    @include mdd { // 867 nếu ko có nó bị dính wooder logo á
+        .header{ &__logo{ img { width: 12rem; } } }
+    }
+
+    @include xs {
+        .header{
+            &__logo{ img { width: 15rem; } }
+            &__navbar{ display: none;}
+            &__language__box{
+                
+                &-select{
+                    justify-content: flex-start;
+                    transform: translateX(-75%);
+                }
+                &-option{
+                    transform: translateX(-100%);
+                }
+                
+                &-mobile{ display: block; transform: translateX(50%); 
+                    position: absolute; left: 0; margin: 0; }
+            }
+        }
+    }
+} 
+
+.mobilemenu{
+    @include box(100%, 100vh);
+    background: $color--bg;
+    opacity: 0;
+    z-index: 90;
+    position: fixed;
+    pointer-events: none;
+    transition: 1s;
+    transform: translateX(100%);
+
+    ul{
+        @include flexbox(column, center, center);
+        text-align: center;
+        list-style: none;
+        height: 100%;
+        
+        li{
+            padding: 1rem 0;
+            a{
+                font-size: 1.5rem;
+                color: $color--white;
+                text-decoration: none;
+                transition: .3s;
+                
+                &:hover{
+                    transition: .3s;
+                    color: $color--orange;
+                }
+            }
+        }
+    }
+}
+
+.mobileshow{
+    @include temposcreen(1 !important, auto !important);
+    transform: translateX(0%);
+}
+
+.active{ @include temposcreen(1 !important, auto !important); }
+
+.screenbgc{
+    background-color: $color--black;
+    transition: .5s;
+}
+
+.underline{
+    &::before{
+        content: "";
+        @include box(auto, .1rem);
+        @include position(absolute, 0, 0, 70%);
+        background-color: $color--orange;
+    }
+}

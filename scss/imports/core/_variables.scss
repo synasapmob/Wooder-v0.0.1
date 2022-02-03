@@ -1,0 +1,35 @@
+
+$color--white: #fff;
+$color--black: #010101;
+$color--orange: #bea67c;
+$color--grey: #464646;
+$color--bg: #303030; 
+$color--silver: #b0b0b0;
+
+
+// layout 
+$max-width: 1920px;
+$container-width: 1010px;
+$container-max-width: $max-width;
+
+
+/*GRID - media queries breakpoints*/
+$xxs-min: 576px; // CÓ THỂ TÙY CHỈNH
+$xs-min: 768px; // KHÔNG THAY ĐỔI
+$sm-min: 992px; // KHÔNG THAY ĐỔI
+$md-min: 1200px; // KHÔNG THAY ĐỔI
+$lg-min: 1600px; // CÓ THỂ TÙY CHỈNH
+$mdd-min: 868px; // tablet dọc
+
+$xxs-max: ($xxs-min - 1); // Small Mobile
+$xs-max: ($xs-min - 1); // Mobile
+$sm-max: ($sm-min - 1); // Tablet
+$md-max: ($md-min - 1); // Desktop
+$lg-max: ($lg-min - 1); // Large Desktop
+$mdd-max: ($mdd-min - 1); // tablet dọc
+// value maybe changed
+:root{
+    --pdsection: 9rem 0; // for all section tag top bottom 90px
+    --headerheight: 8rem; // height of header 80px
+    --fstitle: 10rem;
+}

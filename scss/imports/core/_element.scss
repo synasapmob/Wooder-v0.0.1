@@ -1,0 +1,33 @@
+/**************** LIST Table of Contents *****************/
+/*
+1 --rowreverse 
+2 --columnreverse
+3 --hidden
+4 --coppy
+5 --pd
+*/
+/****************                         *****************/
+
+
+.--rowreverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.--columnreverse{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.--hidden{
+    display: none;
+    background-color: red;
+}
+
+.--coppy{
+    user-select: none;      
+}   
+
+.--pd{
+    padding: 9rem 0;
+}

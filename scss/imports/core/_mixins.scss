@@ -1,0 +1,103 @@
+/**************** LIST Table of Contents *****************/
+/*
+	1, flexbox 
+	2, position (absolute/relative á)
+	3, font
+	4, overtext (cái line-clamp á)
+	5, box (width/height á)
+	7, order
+	7, border (làm border-radius/border á)
+	8, temposcreen (opacity/pointer-event á)
+
+*/
+/****************                         *****************/
+
+
+@mixin flexbox($direction, $justify, $align){
+    display: flex; flex-direction: $direction;
+    justify-content: $justify; align-items: $align;
+}
+
+@mixin position($position, $left : auto, $right : auto, $top : auto){
+    position: $position; left: $left;    
+    right: $right; top: $top;
+}
+
+@mixin font($fontsize, $fontcolor, $fontfamily, $texttransform : none){
+	font-size: $fontsize; color: $fontcolor;
+	font-family: $fontfamily; text-transform: $texttransform;
+}
+
+@mixin overtext($lines) {
+	display: -webkit-inline-box; -webkit-line-clamp: $lines; 
+	-webkit-box-orient: vertical; text-overflow: ellipsis; overflow: hidden; 
+}
+
+@mixin box($width : auto, $height : auto){ width: $width; height: $height; }
+@mixin order($axis, $order){ display: flex; flex-direction: $axis; order: $order; }
+@mixin border($radius, $px, $solid, $color){ border-radius: $radius; border: $px $solid $color; }
+
+
+@mixin temposcreen($opacity : 1, $pointer : auto){
+	opacity: $opacity;
+	pointer-events: $pointer;
+}
+
+// responsive
+
+@mixin lg {
+	@media screen and (max-width: $lg-max) {
+		@content;
+	}
+}
+// desktop
+@mixin md {
+	@media screen and (max-width: $md-max) { 
+		@content;
+	}
+}
+// tablet
+@mixin sm {
+	@media screen and (max-width: $sm-max) {
+		@content;
+	}
+}
+//tablet dọc
+@mixin mdd {
+	@media screen and (max-width: $mdd-max) {
+		@content;
+	}
+}
+
+// mobile
+@mixin xs {
+	@media screen and (max-width: $xs-max) {
+		@content;
+	}
+}
+// small mobile
+@mixin xxs {
+	@media (max-width: $xxs-max) {
+		@content;
+	}
+}
+// desktop landscape
+@mixin mdX {
+	@media screen and (max-width: $md-max) and (orientation: landscape) {
+		@content;
+	}
+}
+// tablet landscape
+@mixin smX {
+	@media screen and (max-width: $sm-max) and (orientation: landscape) {
+		@content;
+	}
+}
+// mobile landscape
+@mixin xsX {
+	@media screen and (max-width: $xs-max) and (orientation: landscape) {
+		@content;
+	}
+}
+
+// average devices (992px)

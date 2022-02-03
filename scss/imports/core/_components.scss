@@ -1,0 +1,13 @@
+.container-fluid{
+    padding: 0 3rem;
+    @include flexbox(row, space-between, center); // dr/js/al
+}
+
+.container{
+    padding: 0 3rem;
+    width: 100%;
+    
+    @include sm {
+        // padding: unset;
+    }
+}

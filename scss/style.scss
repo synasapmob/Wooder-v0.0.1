@@ -1,0 +1,18 @@
+/* core */
+@import './imports/core/variables'; // where to store variable $
+@import './imports/core/reset'; // we have a file rset , what does it do? , reset li/nav...
+@import './imports/core/mixins'; // write again that's bad. so we use callback @include
+@import './imports/core/libs'; // yepp library CSS in here
+@import './imports/core/components'; // multiple big , good job
+@import './imports/core/element'; // single small , good job 
+
+/* pages */ 
+@import './imports/pages/header'; // divide three layout easy to manage
+@import './imports/pages/main';
+@import './imports/pages/footer';
+
+body{ 
+    box-sizing: border-box;
+    overflow-X: hidden;
+}
+html { font-size: 62.5%; /* Now 10px = 1rem! */ }

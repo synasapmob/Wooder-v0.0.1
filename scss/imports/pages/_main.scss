@@ -1,0 +1,811 @@
+.main{
+    &__slider{
+        height: 100vh;
+        overflow: hidden;
+        &__list{
+            width: 100vw;
+            height: 100vh;
+            &-item{
+                @include position(absolute, 50%, 50%, 50%);
+                @include flexbox(column, center, center);
+                transform: translateY(-50%);
+
+                h2{
+                    @include font(8.3rem, $color--orange, Pb, uppercase);
+                    display: ruby; // de em tim hieu lai tai vi bug (19:23) 15
+                    letter-spacing: 2rem
+                }
+                
+                &-btn{
+                    @include flexbox(row, center, center);
+                    @include font(1.4rem, $color--white, Pb, uppercase);
+                    border: .05rem solid $color--white;
+                    padding: 1.2rem 5rem;
+                    margin-top: 3.75rem;
+                    white-space: pre;
+                    text-decoration: none;
+                    
+                    img{ margin-left: 1rem; width: 3.2rem; }
+                }
+                &-slider{
+                    object-fit: cover;
+                    min-width: 100%;
+                    min-height: 100%;
+                }
+            }
+        }
+    } // __slider
+
+    &__bottom{
+        @include position(absolute, auto, auto, 100%);
+        transform: translateY(-100%);
+        padding-bottom: 3rem;
+        width: 100%;
+
+        &-left{
+            @include flexbox(row, center, center);
+            
+            &-number{   
+                @include flexbox(row, center, center);
+                @include font(4.2rem, $color--orange, Pb, uppercase);
+
+                h2{ padding: 0 1.5rem; }
+                &::before{
+                    content: "";
+                    @include box(4.25rem, .34rem);
+                    background-color: $color--orange;
+                }
+            }
+
+            &-dotted{
+                .dot{
+                    background-color: $color--orange;
+
+                }
+            }
+        } // left
+
+        &-center{
+            @include position(absolute, 50%, 50%, -50%);
+            @include flexbox(column, center, center);
+            &-mouse{
+                img{ 
+                    margin: -1rem 0 1rem 0;
+                    width: 1.4rem; object-fit: cover; 
+                }
+            }
+            &-arrow{ 
+                animation: arroweffect 2s infinite  ease-in; 
+            }
+
+            @keyframes arroweffect{
+                0%{
+                    transition: .3s;
+                    transform: translateY(0%);
+                    opacity: 0;
+                }
+                100%{
+                    transition: .3s;
+                    transform: translateY(30%);
+                    opacity: 1;
+                }
+            }
+
+        } // center
+
+        &-right{
+            @include box(14rem, 4rem);
+            display: grid;
+            grid-template: auto / repeat(2, 1fr);
+
+            .--deg{ 
+                transform: rotate(180deg); 
+            }
+            > div{
+                position: relative;
+                margin-left: -.1rem;
+            }
+
+            &-button{
+                @include flexbox(row, center, center);
+                position: relative;
+                right: 10px;
+                i{ display: block; }
+                border: .01rem solid $color--white;
+
+                &:hover{
+                    transition: .3s;
+                    background-color: $color--orange;
+                }
+            }
+        }
+    } // bottom
+
+    @include xs {
+        .main{
+            &__bottom{
+                &-left{ 
+                    &-number { h2 { padding: inherit; } &::before{ content: none; } }
+                    &-dotted { display: none; }
+                }
+                &-center { display: none;}
+            }
+        }
+    }
+}
+
+.main{
+    .products{
+        padding-bottom: 0;
+        &__furniture{
+            width: 100%;
+            @include flexbox(column, center, center);
+
+            &__item{
+                display: flex;
+                
+                &-text{
+                    @include flexbox(column, center, flex-start);
+                    position: relative;
+                    padding: 0 2rem 0 8rem;
+                    
+                    &::before{ // before line á
+                        content: '';
+                        @include box(7rem, .2rem);
+                        @include position(absolute, 0, auto, 27.5%);
+                        transform: translateY(50%);
+                        background-color: $color--grey;
+                        display: block;
+                    } 
+                    h2{  
+                        @include font(4rem, $color--black, Pb, uppercase); 
+                        line-height: 8.3rem;
+                    }
+                    p{
+                        @include font(1.6rem, $color--grey, Pr, none);
+                        line-height: 2.2rem;
+                        margin-bottom: 3.7rem;
+                        white-space: pre-line
+                    }
+                    a{
+                        @include font(1.4rem, $color--black, Pr, uppercase);
+                        letter-spacing: .2rem;
+                        // line-height: 5.8rem;
+                        text-decoration: none;
+                        position: relative;
+  
+                        &::before{
+                            content: '';
+                            @include position(absolute, 0, auto ,auto);
+                            width: 3.4rem;
+                            border-bottom: .2rem solid $color--orange;
+                            margin-bottom: -.4rem;
+                            bottom: 0;
+                            display: block;
+                        }
+                    }
+                }
+            }
+            &__image{
+                max-width: 100%;
+                img{ max-width: 100%; }
+            }
+
+            &.--reverse{
+                direction: rtl;
+                margin-top: 10rem;
+
+                .products__furniture__item-text{
+                    padding: 0 8rem 0 2rem;
+
+                    &::before{ // before line á
+                        content: '';
+                        @include box(7rem, .2rem);
+                        @include position(absolute, auto, 0, 27.5%);
+                        transform: translateY(50%);
+                        background-color: $color--grey;
+                        display: block;
+                    } 
+
+                    a{
+                        direction: ltr;
+                        &::before{
+                            content: '';
+                            @include position(absolute, 0, auto ,auto);
+                            width: 3.4rem;
+                            border-bottom: .2rem solid $color--orange;
+                            margin-bottom: -.4rem;
+                            bottom: 0;
+                            display: block;
+                        }
+
+                        img{ transform: rotate(-360deg);}
+                    }
+                }
+            }
+        }
+
+        &__quality{
+            padding-bottom: 9rem;
+            @include flexbox(column, center, center);
+            
+            &__text{
+                position: relative;
+                text-align: center;
+
+                &-content{
+                    margin-bottom: 9rem;
+
+                    h2{
+                        @include font(4rem, $color--black, Pb, uppercase);   
+                        margin-bottom: 2.2rem;
+                    }
+                    p{ 
+                        @include font(1.6rem, $color--grey, Pr, none); 
+                        white-space: pre-line;
+                        line-height: 2rem;
+                        letter-spacing: .2rem;
+                    }
+        
+                    &::after{
+                        content: '';
+                        @include box(3.6rem, .4rem);
+                        @include position(absolute, 48%, 50%, 50);
+                        background-color: $color--orange;
+                    }
+                }
+            }
+            &__list{
+                @include flexbox(row, center, center);
+                
+                &__item{
+                    @include flexbox(column, center, center);
+                    
+                    &__image{
+                        position: relative;
+                        padding: 0 5.5rem;
+                        &-circle{
+                            @include flexbox(row, center, center);
+                            img{
+                                padding: .8rem;
+                                max-width: 100%;                                    
+                                @include border(100%, .4rem, solid, $color--white);
+                                outline: none;
+                                box-shadow: 0px 0px .1rem 0px rgba(0,0,0, .50);
+                            }
+                        }
+                        &-play{
+                            @include position(absolute, 50%, 50%, 50%);
+                            @include box(4.5rem, 4.5rem);
+                            transform: translate(-50%, -50%);
+                            background: $color--orange;
+                            max-width: 100%;
+                            border-radius: 100%;
+                            opacity: .5;
+
+                            img{ 
+                                width: 1.5rem; @include 
+                                position(absolute, 50%, 50%, 50%); 
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+
+                    &__text{
+                        @include flexbox(row, center, center);
+                        position: relative;
+                        margin-top: 1.6rem;
+                        
+                        &-content{
+                            @include font(1.6rem, $color--black, Pr, none);
+                            margin-top: 3.8rem;
+                            line-height: 2rem;
+                        }
+                        &::before{
+                            content: '';
+                            @include position(absolute, 50%, 50%, -0%);
+                            @include box(2rem, .2rem);
+                            transform: translateX(-50%);
+                            line-height: 2.4rem;
+                            background-color: $color--orange;
+                        }
+                    }
+
+                } // end item
+            } // end list
+
+        }
+
+        @include mdd{
+            
+            &__furniture {
+                &__item{
+                    @include flexbox(column, center, flex-start);
+                    position: relative;
+                    
+                    &-text{
+                        padding-bottom: 8rem;
+                        &::before{ // before line á
+                            content: '';
+                            @include box(7rem, .2rem);
+                            @include position(absolute, 0, auto, 12.5%);
+                            transform: translateY(50%);
+                            background-color: $color--grey;
+                            display: block;
+                        } 
+                    }
+                } // item
+            }
+            .--reverse .products__furniture__item-text {
+
+                padding-bottom: 8rem;
+                position: relative;
+                &::before{ // before line á
+                    content: '';
+                    @include box(7rem, .2rem);
+                    @include position(absolute, auto, 0, 12.5%);
+                    transform: translateY(50%);
+                    background-color: $color--grey;
+                    display: block;
+                } 
+            }
+      
+            &__quality{
+                &__list__item{
+                    &__image{
+                        padding: 0 3.5rem;
+                    }
+                }
+            }
+        }
+
+        @include xs {
+
+            &__furniture__item{
+                @include flexbox(column-reverse, auto, center);
+
+                &-text{
+                    margin-top: 2rem;
+                    padding: inherit;
+                    width: 100%;
+                    align-items: flex-start;     
+                    position: unset;
+
+                    &::before{ content: none; }
+                }
+            }
+            .--reverse .products__furniture__item-text{ // lồng of text decor
+                padding: inherit; 
+
+                &::before{ content: none; }
+                a{
+                    direction: ltr;
+                    img{ transform: rotate(0deg); }
+                    &::before{
+                        content: '';
+                        @include position(absolute, 0, auto ,auto);
+                        width: 3.4rem;
+                        border-bottom: .2rem solid $color--orange;
+                        margin-bottom: -.4rem;
+                        bottom: 0;
+                        display: block;
+                    }
+                }
+            }
+            
+            &__quality{
+                padding-bottom: inherit;
+                    
+                &__text-content p{
+                    white-space: pre-line;
+                }
+                &__list{
+                    
+                    @include flexbox(column, auto, center);
+    
+                    &__item{
+                        padding: 3rem 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.complexity{
+
+    background: url(../../image/main/main.jpg) no-repeat fixed center;
+    background-size: cover;
+    &::before {
+        content: "";
+        @include box(100%, 100%);
+        @include position(fixed, 0, 0, auto);
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    &__box{
+        @include flexbox(column, center, flex-start);
+        @include box(100%, 85vh);
+        white-space: pre-line;
+
+        &-content{
+            @include font(4rem, $color--orange, Pb, uppercase);
+            line-height: 5rem;
+            letter-spacing: .25rem;
+        }
+
+        &-information{
+            @include font(1.6rem, $color--white, Pr, none);
+            margin-top: 3rem;
+            line-height: 2.2rem;
+            letter-spacing: .25rem;
+        }
+
+        &-link{
+            @include flexbox(row-reverse, center, center);
+            margin-top: 5.8rem;
+            border: .1rem solid $color--white;
+            transition: .3s;
+            cursor: pointer;
+            padding: .1rem 5.5rem;
+            a{
+                // padding: .2rem 5.5rem;
+                @include font(1.2rem, $color--white, Pr, uppercase);
+                line-height: 5.8rem;
+                letter-spacing: .2rem;
+                width: 100%;
+                text-decoration: none;
+            }
+
+            &:hover{
+                background-color: $color--orange;
+            }
+            img{ max-width: 100%; margin-right: 1.3rem; }
+        }
+    }
+
+    @include mdd { 
+
+        &__box{
+            @include box(100%, 100%);
+
+            &-information{
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+
+.about{
+    @include flexbox(row, center, center);
+    &__box{
+        @include flexbox(row, center, center);
+
+        .aboutline{
+            order: 2;
+            position: relative;
+
+            &::before{
+                content: '';
+                @include position(absolute, -2.9rem, 0, 18.5%);
+                @include box(8rem, .1rem);
+                transform: translateY(-100%);
+                border-bottom: .2rem solid $color--orange;
+                display: block;
+            }
+        }
+    }
+
+    @include mdd {
+
+        .aboutline{
+            &::before{
+                content: '';
+                @include position(absolute, -2.9rem, 0, 14.5%);
+                @include box(8rem, .1rem);
+                transform: translateY(-100%);
+                border-bottom: .2rem solid $color--orange;
+                display: block;
+            }
+
+            h2{
+                font-size: 2.5rem;
+            }
+
+            p{
+                transform: translateX(-24%);
+                white-space: pre;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    @include xs { 
+        &__box{
+            @include flexbox(column-reverse, center, center);
+
+            .aboutline{
+                p{
+                    transform: none;
+                    white-space: pre-line;
+                }
+            }
+        }
+        .products__furniture__image { width: 100%; justify-content: flex-end;}
+        .about__box .aboutline::before { content: none; }
+    }
+}
+
+.gallery{
+    background-color: $color--black;
+    padding: 8.8rem 0 9.3rem 0;    
+    position: relative;
+    @include flexbox(row, center, center);
+
+    &__text{
+        max-width: 100%;
+        
+        h2{
+            @include font(4rem, $color--white, Pb, uppercase);
+        }
+        p{
+            @include font(1.6rem, $color--white, Pb, uppercase);
+            white-space: pre-line;
+            margin-bottom: 5rem;
+        }
+    }
+    
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 200px 200px;
+        gap: 1rem;
+        &-item{
+            overflow: hidden;
+            position: relative;
+            
+            img { 
+                max-width: 100%; max-height: 100%; object-fit: cover; 
+                transition: .3s;
+                transform: scale(1);
+                
+                &:hover{
+                    transform: scale(1.04);
+                }
+
+            }
+            &.item2{
+                grid-column: 2/3;
+                grid-row: 1/3;
+            }
+        }
+    }
+    @include sm {
+        &__grid{
+            grid-template-rows: none;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @include xs {
+        &__grid{
+            grid-template-rows: none;
+            grid-template-columns: none;
+        }
+    }
+
+}
+
+.news{
+    padding: 9rem 9rem 9rem 0;    
+    position: relative;
+
+    &__box{
+        &__text{
+            max-width: 100%;
+            
+            h2{
+                @include font(4rem, $color--black, Pb, uppercase);
+            }
+            p{
+                @include font(1.6rem, $color--black, Pb, uppercase);
+                white-space: pre-line;
+                margin-bottom: 5rem;
+            }
+        }
+
+        &__mobile{
+            padding: 4rem 0;
+            display: none;
+
+            &-btn{
+                border: none;
+                color: $color--black;
+                font-weight: Bold;
+
+                &:hover{
+                    
+                    transition: .2s;
+                    background-color: $color--orange;
+                    color: $color--white;
+                    outline: none;
+                }
+            }
+            button{ padding: .8rem 2rem; margin-right: 2rem; }
+        }
+        
+        &__grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            &__list{
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+                
+                &-image{
+                    img { 
+                        max-width: 100%; max-height: 100%; object-fit: cover; 
+                        transition: .3s;
+                        transform: scale(1);
+                        
+                        &:hover{
+                            transform: scale(1.04);
+                        }
+                    }
+                }
+
+                &-text{
+                    width: 100%;
+                    white-space: pre-line;
+                    a{
+                        transition: .3s;
+                        text-decoration: none;
+                        @include font(1.8rem, $color--black, Pb, uppercase);
+                        @include overtext(2);
+                        height: 8rem;
+
+
+                        &:hover{
+                            transition: .3s;
+                            color: $color--orange
+                        }
+                        &::before{
+                            content: '';
+                            @include box(8rem, .3rem);
+                            background-color: $color--orange;
+                            margin: 2rem 0;
+                            display: block;
+                        }
+                    }
+                    p{
+                        @include font(1.5rem, $color--black, Pb, uppercase);
+                        @include overtext(4);
+
+                    }
+                }
+            }
+        }
+        @include sm {
+            &__mobile{ display: block; }
+            &__grid{
+                display: block;
+                
+                &__list{
+                    &-image img { width: 100%; }
+                    &-text { height: auto; margin-bottom: 3rem; }
+                }
+            }
+            &__text p { margin-bottom: inherit; } // cái text we are a team á
+        }
+    }
+}
+
+.faq{
+    padding-top: unset;
+
+    &__list{
+        white-space: pre-line;
+        font-size: 2rem;
+        
+        &__question{
+            @include font(4rem, $color--black, Pb, none);
+            opacity: .8;
+            margin-bottom: 3rem;
+
+            &-title{
+                line-height: 4rem;
+            }
+            
+        }
+
+        &__anwser{
+            @include font(1.6rem, $color--black, Pb, none);
+            padding: 2rem 0;
+
+            &-button{
+                transform: rotate(-3deg);
+                width: 20%;
+                border: none;
+                border-radius: 2rem;
+                padding: .5rem .5rem;
+                box-shadow: 0px 12px 0px rgba(0,0,0,0.8);
+
+                &::after{
+                    content: 'x';
+                    float: right;
+                    margin-right: 1rem;
+                    @include font(2rem, red, Pb, none);
+                }
+                &:active{
+                    position: relative;
+                    box-shadow: 0px 0px 0px rgba(0,0,0,0.8);
+                    top: 1rem;
+                }
+            }
+
+            &-content{
+                border-radius: 2rem;
+                width: 50%;
+                text-align: center;
+                padding: 1rem;
+                background-color: $color--orange;
+                margin-top: 4rem;
+                line-height: 2.3rem;
+                display: none;
+                max-height: 0;
+                transition: max-height .2s ease-in;
+            }
+        }
+    }
+    @include mdd {
+        &__list{
+            &__question{
+                font-size: 3rem;
+            }
+        }
+    }
+    @include xs {
+        &__list{
+            &__question{
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+.faqshow{ 
+    display: inline-block;
+    max-height: 0;
+    transition: max-height .2s ease-in; 
+    position: relative;
+
+    &::before{
+        content: "1.";
+        color: green;
+        margin: .7rem;
+        @include position(absolute, 0, auto, 0);
+    }
+}
+.faqafter { 
+    &::after{ 
+        content: 'v';
+        float: right;
+        margin-right: 1rem;
+        @include font(2rem, green, Pb, none);
+    }
+};
+
+.unsplash{
+    @include flexbox(row, flex-start, center);
+    padding: 0 0 9rem 0;
+    overflow: hidden;
+    width: 100%;
+
+    img{
+        padding-right: 2.3rem;
+        min-width: 23.5rem;
+    }
+    @include sm {
+        display: none;
+    }
+}
