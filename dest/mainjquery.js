@@ -23,7 +23,6 @@ $(document).ready(function(){
     SliderHeader();
 });
 
-
 MenuMobile = () => {
     $(".header__language__box-mobile").click(function(){
         $(".mobilemenu").toggleClass("mobileshow");

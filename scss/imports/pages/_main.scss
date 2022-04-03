@@ -1,7 +1,7 @@
 .main{
     &__slider{
-        height: 100vh;
         overflow: hidden;
+
         &__list{
             width: 100vw;
             height: 100vh;
@@ -12,7 +12,7 @@
 
                 h2{
                     @include font(8.3rem, $color--orange, Pb, uppercase);
-                    display: ruby; // de em tim hieu lai tai vi bug (19:23) 15
+                    display: flex;
                     letter-spacing: 2rem
                 }
                 
@@ -20,12 +20,34 @@
                     @include flexbox(row, center, center);
                     @include font(1.4rem, $color--white, Pb, uppercase);
                     border: .05rem solid $color--white;
+                    position: relative;
                     padding: 1.2rem 5rem;
                     margin-top: 3.75rem;
                     white-space: pre;
                     text-decoration: none;
+                    transition: .5s;
                     
-                    img{ margin-left: 1rem; width: 3.2rem; }
+                    img{
+                        margin-left: 1rem; width: 3.2rem; 
+                    }
+
+                    &::before{
+                        content: "";
+                        @include position(absolute, 0, auto, auto);
+                        width: 25%; height: 100%;
+
+                        background-color: rgba($color--orange, .75);
+                        opacity: .6;
+                        transform: translateX(0%);
+                        display: none;
+                    }
+                    &:hover{
+                        img{
+                            transition: .5s;
+                            transform: translateX(15%);
+                        }
+                    }
+
                 }
                 &-slider{
                     object-fit: cover;

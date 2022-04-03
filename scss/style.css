@@ -1,12 +1,5 @@
 @charset "UTF-8";
 /* core */
-/*GRID - media queries breakpoints*/
-:root {
-  --pdsection: 9rem 0;
-  --headerheight: 8rem;
-  --fstitle: 10rem;
-}
-
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -59,6 +52,35 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/*GRID - media queries breakpoints*/
+:root {
+  --pdsection: 9rem 0;
+  --headerheight: 8rem;
+  --fstitle: 10rem;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  max-width: 1920px;
+  margin: auto;
 }
 
 /**************** LIST Table of Contents *****************/
@@ -834,7 +856,14 @@ a.pswp__share--download:hover {
   text-transform: normal;
   padding: .5rem 0rem;
   width: 100%;
+  height: 100%;
   text-decoration: none;
+}
+
+.header__language__box-option a:hover {
+  -webkit-transition: .5s;
+  transition: .5s;
+  background-color: black;
 }
 
 .header__language__box-mobile {
@@ -1003,7 +1032,6 @@ a.pswp__share--download:hover {
 }
 
 .main__slider {
-  height: 100vh;
   overflow: hidden;
 }
 
@@ -1039,7 +1067,9 @@ a.pswp__share--download:hover {
   color: #bea67c;
   font-family: Pb;
   text-transform: uppercase;
-  display: ruby;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   letter-spacing: 2rem;
 }
 
@@ -1062,15 +1092,40 @@ a.pswp__share--download:hover {
   font-family: Pb;
   text-transform: uppercase;
   border: 0.05rem solid #fff;
+  position: relative;
   padding: 1.2rem 5rem;
   margin-top: 3.75rem;
   white-space: pre;
   text-decoration: none;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .main__slider__list-item-btn img {
   margin-left: 1rem;
   width: 3.2rem;
+}
+
+.main__slider__list-item-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: auto;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(190, 166, 124, 0.75);
+  opacity: .6;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  display: none;
+}
+
+.main__slider__list-item-btn:hover img {
+  -webkit-transition: .5s;
+  transition: .5s;
+  -webkit-transform: translateX(15%);
+          transform: translateX(15%);
 }
 
 .main__slider__list-item-slider {
@@ -2363,7 +2418,6 @@ footer .footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 77.5%;
   font-size: 1.2rem;
   color: #b0b0b0;
   font-family: Pb;
@@ -2465,16 +2519,5 @@ footer .footer .backtotop a {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   background-color: orange;
-}
-
-body {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  overflow-X: hidden;
-}
-
-html {
-  font-size: 62.5%;
-  /* Now 10px = 1rem! */
 }
 /*# sourceMappingURL=style.css.map */

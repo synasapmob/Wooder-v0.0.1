@@ -1,0 +1,16 @@
+@-ms-viewport { width: device-width; } // unkown , này của bootstrap thì phải
+
+* {
+    -webkit-font-smoothing: antialiased; // làm mịn font nha
+    -moz-osx-font-smoothing: grayscale; // khử răng cưa theo thang độ xám
+    text-rendering: optimizeLegibility; // nó tăng hiệu xuất làm dễ đọc hơn
+    box-sizing: border-box; // w/height không tăng khi pd/mr được tăng
+}
+html { font-size: 62.5%; }  // => 10px = 1rem
+
+body {
+    font-size: 1.6rem; // reset body = 16px
+    max-width: $container-max-width; // không được vượt quá 100%
+    // width: $container-width; // sét cứng width không thể vượt quá $var
+    margin: auto; // căng ra giữa nếu width bị vượt
+}

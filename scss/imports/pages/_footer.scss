@@ -3,7 +3,6 @@ footer{
     padding: 1.8rem 0 2.2rem 0;
     .footer{
         @include flexbox(row, space-between, center);
-        width: 77.5%;
         @include font(1.2rem, $color--silver, Pb, uppercase);
         white-space: pre;
         
