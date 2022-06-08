@@ -174,7 +174,7 @@
                     &::before{ // before line á
                         content: '';
                         @include box(7rem, .2rem);
-                        @include position(absolute, 0, auto, 27.5%);
+                        @include position(absolute, 0, auto, 33.5%);
                         transform: translateY(50%);
                         background-color: $color--grey;
                         display: block;
@@ -223,7 +223,7 @@
                     &::before{ // before line á
                         content: '';
                         @include box(7rem, .2rem);
-                        @include position(absolute, auto, 0, 27.5%);
+                        @include position(absolute, auto, 0, 33.5%);
                         transform: translateY(50%);
                         background-color: $color--grey;
                         display: block;
@@ -293,7 +293,7 @@
                                 max-width: 100%;                                    
                                 @include border(100%, .4rem, solid, $color--white);
                                 outline: none;
-                                box-shadow: 0px 0px .1rem 0px rgba(0,0,0, .50);
+                                box-shadow: 0px 0px 1rem 0px rgba(0,0,0, .15);
                             }
                         }
                         &-play{
@@ -447,12 +447,12 @@
 
     &__box{
         @include flexbox(column, center, flex-start);
-        @include box(100%, 85vh);
-        white-space: pre-line;
+        @include box(100%, 100%);
 
         &-content{
             @include font(4rem, $color--orange, Pb, uppercase);
             line-height: 5rem;
+            white-space: pre-line;
             letter-spacing: .25rem;
         }
 
@@ -461,6 +461,10 @@
             margin-top: 3rem;
             line-height: 2.2rem;
             letter-spacing: .25rem;
+
+            span{
+                white-space: pre-line;
+            }
         }
 
         &-link{
@@ -580,19 +584,21 @@
     &__grid{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 200px 200px;
+        grid-template-rows: repeat(2, 1fr);
         gap: 1rem;
         &-item{
             overflow: hidden;
             position: relative;
             
             img { 
-                max-width: 100%; max-height: 100%; object-fit: cover; 
-                transition: .3s;
-                transform: scale(1);
-                
+                min-width: 100%;
+                object-fit: contain; 
+                transition: .3s linear;
+
                 &:hover{
-                    transform: scale(1.04);
+                    transform: scale(1.1);
+                    transition: .3s linear;
+                    filter: brightness(50%);
                 }
 
             }
@@ -630,7 +636,6 @@
             }
             p{
                 @include font(1.6rem, $color--black, Pb, uppercase);
-                white-space: pre-line;
                 margin-bottom: 5rem;
             }
         }
@@ -659,26 +664,30 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
+
             &__list{
-                overflow: hidden;
                 position: relative;
                 cursor: pointer;
                 
                 &-image{
+                    overflow: hidden;
+
                     img { 
-                        max-width: 100%; max-height: 100%; object-fit: cover; 
-                        transition: .3s;
+                        min-width: 100%;
+                        object-fit: contain;
+
+                        transition: .3s linear;
                         transform: scale(1);
                         
                         &:hover{
-                            transform: scale(1.04);
+                            transition: .3s linear;
+                            transform: scale(1.1);
                         }
                     }
                 }
 
                 &-text{
                     width: 100%;
-                    white-space: pre-line;
                     a{
                         transition: .3s;
                         text-decoration: none;
@@ -702,6 +711,7 @@
                     p{
                         @include font(1.5rem, $color--black, Pb, uppercase);
                         @include overtext(4);
+                        white-space: pre-line;
 
                     }
                 }
@@ -821,11 +831,12 @@
     @include flexbox(row, flex-start, center);
     padding: 0 0 9rem 0;
     overflow: hidden;
-    width: 100%;
 
+    &-item{
+        max-width: 100%;        
+    }
     img{
         padding-right: 2.3rem;
-        min-width: 23.5rem;
     }
     @include sm {
         display: none;

@@ -1379,7 +1379,7 @@ a.pswp__share--download:hover {
   position: absolute;
   left: 0;
   right: auto;
-  top: 27.5%;
+  top: 33.5%;
   -webkit-transform: translateY(50%);
           transform: translateY(50%);
   background-color: #464646;
@@ -1451,7 +1451,7 @@ a.pswp__share--download:hover {
   position: absolute;
   left: auto;
   right: 0;
-  top: 27.5%;
+  top: 33.5%;
   -webkit-transform: translateY(50%);
           transform: translateY(50%);
   background-color: #464646;
@@ -1594,8 +1594,8 @@ a.pswp__share--download:hover {
   border-radius: 100%;
   border: 0.4rem solid #fff;
   outline: none;
-  -webkit-box-shadow: 0px 0px 0.1rem 0px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 0px 0.1rem 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 1rem 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 1rem 0px rgba(0, 0, 0, 0.15);
 }
 
 .main .products__quality__list__item__image-play {
@@ -1829,8 +1829,7 @@ a.pswp__share--download:hover {
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100%;
-  height: 85vh;
-  white-space: pre-line;
+  height: 100%;
 }
 
 .complexity__box-content {
@@ -1839,6 +1838,7 @@ a.pswp__share--download:hover {
   font-family: Pb;
   text-transform: uppercase;
   line-height: 5rem;
+  white-space: pre-line;
   letter-spacing: .25rem;
 }
 
@@ -1850,6 +1850,10 @@ a.pswp__share--download:hover {
   margin-top: 3rem;
   line-height: 2.2rem;
   letter-spacing: .25rem;
+}
+
+.complexity__box-information span {
+  white-space: pre-line;
 }
 
 .complexity__box-link {
@@ -2058,8 +2062,8 @@ a.pswp__share--download:hover {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: 200px 200px;
-      grid-template-rows: 200px 200px;
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -2069,19 +2073,20 @@ a.pswp__share--download:hover {
 }
 
 .gallery__grid-item img {
-  max-width: 100%;
-  max-height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-transition: .3s;
-  transition: .3s;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  min-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
 }
 
 .gallery__grid-item img:hover {
-  -webkit-transform: scale(1.04);
-          transform: scale(1.04);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
 }
 
 .gallery__grid-item.item2 {
@@ -2132,7 +2137,6 @@ a.pswp__share--download:hover {
   color: #010101;
   font-family: Pb;
   text-transform: uppercase;
-  white-space: pre-line;
   margin-bottom: 5rem;
 }
 
@@ -2169,30 +2173,33 @@ a.pswp__share--download:hover {
 }
 
 .news__box__grid__list {
-  overflow: hidden;
   position: relative;
   cursor: pointer;
 }
 
+.news__box__grid__list-image {
+  overflow: hidden;
+}
+
 .news__box__grid__list-image img {
-  max-width: 100%;
-  max-height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-transition: .3s;
-  transition: .3s;
+  min-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
   -webkit-transform: scale(1);
           transform: scale(1);
 }
 
 .news__box__grid__list-image img:hover {
-  -webkit-transform: scale(1.04);
-          transform: scale(1.04);
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .news__box__grid__list-text {
   width: 100%;
-  white-space: pre-line;
 }
 
 .news__box__grid__list-text a {
@@ -2236,6 +2243,7 @@ a.pswp__share--download:hover {
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: pre-line;
 }
 
 @media screen and (max-width: 991px) {
@@ -2385,12 +2393,14 @@ a.pswp__share--download:hover {
           align-items: center;
   padding: 0 0 9rem 0;
   overflow: hidden;
-  width: 100%;
+}
+
+.unsplash-item {
+  max-width: 100%;
 }
 
 .unsplash img {
   padding-right: 2.3rem;
-  min-width: 23.5rem;
 }
 
 @media screen and (max-width: 991px) {

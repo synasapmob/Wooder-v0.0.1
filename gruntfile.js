@@ -43,7 +43,6 @@ module.exports = grunt => {
 				}
 			}
 		},
-
 		watch: {
 			options: {
 				livereload: true,
@@ -62,7 +61,6 @@ module.exports = grunt => {
 			//     tasks: ['uglify']
 			// },
 		},
-
 		browserSync: {
 			dev: {
 				bsFiles: {
